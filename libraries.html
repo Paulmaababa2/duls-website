@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>All 34 Libraries — Delhi University Library System (DULS)</title>
+<meta name="description" content="Complete directory of all 34 libraries in the Delhi University Library System with floor details, opening hours, collections, and contact information.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{'du-purple':'#6B2D8B','du-purple-dark':'#4A1D6B','du-purple-light':'#9B59B6','du-gold':'#D4A843','du-gold-light':'#F0D68A','du-cream':'#FDF8F0'},fontFamily:{heading:['"Playfair Display"','Georgia','serif'],body:['"Inter"','system-ui','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" type="image/png" href="images/du_logo.png">
+<script src="darkmode.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-padding-top:80px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg,#fff);color:var(--text,#1e293b);transition:background .4s,color .4s}
+:root{--bg:#fff;--bg-alt:#FDF8F0;--bg-card:#fff;--text:#1e293b;--text-sec:#475569;--text-muted:#94a3b8;--border:#ede4f5}
+[data-theme="dark"]{--bg:#0f0a18;--bg-alt:#16102a;--bg-card:#1c1533;--text:#e8e0f0;--text-sec:#b8aed0;--text-muted:#7a6e96;--border:#2e2548}
+.lib-card{background:var(--bg-card);border:1px solid var(--border);border-radius:1rem;padding:1.25rem;transition:all .3s}
+.lib-card:hover{border-color:#D4A843;box-shadow:0 12px 36px rgba(107,45,139,.12);transform:translateY(-2px)}
+html[data-theme="dark"] .lib-card{background:var(--bg-card);border-color:var(--border)}
+html[data-theme="dark"] .lib-card h3{color:#e0d0f4!important}
+html[data-theme="dark"] .lib-card p,html[data-theme="dark"] .lib-card span{color:var(--text-sec)}
+html[data-theme="dark"] .bg-du-cream{background:var(--bg-alt)!important}
+html[data-theme="dark"] .bg-du-cream\/80{background:rgba(255,255,255,.05)!important}
+html[data-theme="dark"] .bg-white{background:var(--bg)!important}
+html[data-theme="dark"] .text-gray-800{color:var(--text)!important}
+html[data-theme="dark"] .text-gray-500{color:var(--text-sec)!important}
+html[data-theme="dark"] .text-gray-400{color:var(--text-muted)!important}
+html[data-theme="dark"] .text-du-purple-dark{color:#d4b8ef!important}
+html[data-theme="dark"] footer{background:#08050f!important}
+.filter-btn,.campus-btn{padding:.4rem .85rem;border-radius:2rem;font-size:.72rem;font-weight:600;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-btn:hover,.campus-btn:hover{border-color:#D4A843;color:#D4A843}
+.filter-btn.active,.campus-btn.active{background:#6B2D8B;color:#fff;border-color:#6B2D8B}
+.lib-card.hidden-filter{display:none}
+.theme-toggle{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:36px;height:36px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:15px;flex-shrink:0;position:relative;overflow:hidden}
+.theme-toggle:hover{background:rgba(212,168,67,.2);border-color:rgba(212,168,67,.4)}
+.theme-toggle .icon-sun,.theme-toggle .icon-moon{position:absolute;transition:transform .4s cubic-bezier(.4,0,.2,1),opacity .3s}
+.theme-toggle .icon-sun{opacity:0;transform:rotate(90deg) scale(.5)}
+.theme-toggle .icon-moon{opacity:1;transform:rotate(0) scale(1)}
+[data-theme="dark"] .theme-toggle .icon-sun{opacity:1;transform:rotate(0) scale(1)}
+[data-theme="dark"] .theme-toggle .icon-moon{opacity:0;transform:rotate(-90deg) scale(.5)}
+#search-input{background:var(--bg-card);border:1px solid var(--border);color:var(--text);border-radius:.75rem;padding:.6rem 1rem .6rem 2.5rem;width:100%;max-width:400px;font-size:.85rem;transition:border-color .2s;outline:none}
+#search-input:focus{border-color:#6B2D8B}
+::selection{background:#D4A843;color:#4A1D6B}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-alt)}
+::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,#6B2D8B,#9B59B6);border-radius:3px}
+</style>
+</head>
+<body class="font-body min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full z-50 bg-du-purple-dark/97 backdrop-blur-xl shadow-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+  <a href="index.html" class="flex items-center gap-2"><img src="images/du_logo.png" alt="DU" class="w-10 h-10 rounded-full bg-white p-[2px]"><div class="hidden sm:block"><span class="text-white font-heading font-bold text-sm">DULS Libraries</span><br><span class="text-du-gold-light text-[10px]">Complete Directory</span></div></a>
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="text-white/70 hover:text-du-gold text-xs font-medium transition-colors"><i class="fas fa-arrow-left mr-1"></i>Back to Home</a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-sun icon-sun"></i><i class="fas fa-moon icon-moon"></i></button>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-24 pb-12 bg-gradient-to-br from-du-purple-dark via-du-purple to-du-purple-dark relative overflow-hidden">
+<div class="absolute inset-0 opacity-10"><div class="absolute top-0 left-0 w-72 h-72 bg-du-gold rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+  <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full border border-white/20 mb-4"><i class="fas fa-building text-du-gold text-xs"></i><span class="text-du-gold-light text-xs font-semibold uppercase tracking-wider">Complete Directory</span></span>
+  <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white">All <span class="text-du-gold">34 Libraries</span></h1>
+  <p class="text-white/60 mt-3 max-w-2xl mx-auto text-sm">A federated network of specialised libraries spanning both campuses — floor details, opening hours, collections, and contact information.</p>
+  <div class="flex justify-center gap-6 mt-8">
+    <div class="text-center"><div class="text-3xl font-heading font-bold text-du-gold">34</div><div class="text-white/50 text-xs">Libraries</div></div>
+    <div class="border-l border-white/20 pl-6 text-center"><div class="text-3xl font-heading font-bold text-du-gold">2,000+</div><div class="text-white/50 text-xs">Reading Seats</div></div>
+    <div class="border-l border-white/20 pl-6 text-center"><div class="text-3xl font-heading font-bold text-du-gold">1,86,773</div><div class="text-white/50 text-xs">sq ft Total Area</div></div>
+  </div>
+</div>
+</section>
+
+<!-- FLOOR MAP OVERVIEW -->
+<section class="py-12 bg-du-cream">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="font-heading text-2xl font-bold text-du-purple-dark text-center mb-6"><i class="fas fa-map text-du-gold mr-2"></i>Campus Overview</h2>
+  <div class="grid sm:grid-cols-2 gap-6">
+    <div class="bg-white rounded-2xl border border-du-purple/10 p-6 shadow-sm">
+      <h3 class="font-heading text-lg font-bold text-du-purple-dark mb-2"><i class="fas fa-map-marker-alt text-du-gold mr-2"></i>North Campus</h3>
+      <p class="text-gray-500 text-xs mb-3">Main hub housing Central Library, CSL, Arts Library, RTL, and most departmental libraries.</p>
+      <div class="rounded-xl overflow-hidden h-48"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.9!2d77.2103!3d28.6881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5c6def2135%3A0x4a9c0ca78ee0c4f0!2sDelhi%20University%20Library!5e0!3m2!1sen!2sin!4v1690000000000" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" title="North Campus"></iframe></div>
+      <p class="text-[10px] text-gray-400 mt-2">30 libraries on North Campus</p>
+    </div>
+    <div class="bg-white rounded-2xl border border-du-purple/10 p-6 shadow-sm">
+      <h3 class="font-heading text-lg font-bold text-du-purple-dark mb-2"><i class="fas fa-map-marker-alt text-du-gold mr-2"></i>South Campus</h3>
+      <p class="text-gray-500 text-xs mb-3">South Campus Library, Law Centre-II, and South Campus departmental libraries.</p>
+      <div class="rounded-xl overflow-hidden h-48"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505!2d77.199!3d28.548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce252ff3fffff%3A0xa21fa4bff53bcb7c!2sUniversity%20of%20Delhi%20-%20South%20Campus!5e0!3m2!1sen!2sin!4v1690000000001" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" title="South Campus"></iframe></div>
+      <p class="text-[10px] text-gray-400 mt-2">4 libraries on South Campus</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FILTERS & SEARCH -->
+<section class="py-8 bg-white sticky top-16 z-40 border-b border-gray-100 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="relative"><i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i><input id="search-input" type="text" placeholder="Search library by name, department, or subject..."></div>
+    <div class="flex items-center gap-2"><button class="campus-btn active" data-campus="all">Both Campuses</button><button class="campus-btn" data-campus="north">North Campus</button><button class="campus-btn" data-campus="south">South Campus</button></div>
+  </div>
+  <div class="flex flex-wrap gap-2 mt-3" id="cat-filters"><button class="filter-btn active" data-filter="all">All Libraries <span class="ml-1 text-[10px] opacity-60">35</span></button><button class="filter-btn" data-filter="major_library">Major Library <span class="ml-1 text-[10px] opacity-60">5</span></button><button class="filter-btn" data-filter="law_library">Law Library <span class="ml-1 text-[10px] opacity-60">4</span></button><button class="filter-btn" data-filter="special_library">Special Library <span class="ml-1 text-[10px] opacity-60">1</span></button><button class="filter-btn" data-filter="faculty_library">Faculty Library <span class="ml-1 text-[10px] opacity-60">2</span></button><button class="filter-btn" data-filter="science_dept">Science Dept. <span class="ml-1 text-[10px] opacity-60">8</span></button><button class="filter-btn" data-filter="education">Education <span class="ml-1 text-[10px] opacity-60">1</span></button><button class="filter-btn" data-filter="arts_dept">Arts Dept. <span class="ml-1 text-[10px] opacity-60">5</span></button><button class="filter-btn" data-filter="social_science">Social Science <span class="ml-1 text-[10px] opacity-60">5</span></button><button class="filter-btn" data-filter="languages">Languages <span class="ml-1 text-[10px] opacity-60">3</span></button><button class="filter-btn" data-filter="area_studies">Area Studies <span class="ml-1 text-[10px] opacity-60">1</span></button></div>
+  <div class="text-xs text-gray-400 mt-2" id="results-count">Showing all 35 libraries</div>
+</div>
+</section>
+
+<!-- LIBRARY CARDS -->
+<section class="py-10 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="grid gap-4" id="lib-grid">
+<div class="lib-card group" data-campus="north" data-cat="major_library" id="lib-1">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-landmark"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Central Reference Library (CRL)</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Major Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1922</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>500+ seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>Ground + 2 Stacks floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 8:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> General books, reference works, periodicals, back volumes, theses, dissertations, rare books & manuscripts</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Inaugurated 1 Dec 1958 by President Dr. S. Radhakrishnan; impressive 38 ft high central hall; Burma teak cases from Viceroy Lord Linlithgow</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Somesh Vishwakarma</span><a href="mailto:dl_cl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>dl_cl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="major_library" id="lib-2">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-atom"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Central Science Library (CSL)</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Major Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>185 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>Ground + 2 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 8:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Science journals, textbooks, reference materials across physics, chemistry, botany, zoology, geology, mathematics</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Three-storey dedicated science building; serves all science faculty departments</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Lohrii Kaini Mahemei</span><a href="mailto:dl_csl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>dl_csl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="major_library" id="lib-3">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-palette"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Arts Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Major Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>150 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>Within CRL floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 8:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Humanities, languages, literature, fine arts, performing arts</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Located within the Central Library complex; serves all Arts Faculty departments</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Somesh Vishwakarma</span><a href="mailto:dl_cl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>dl_cl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="major_library" id="lib-4">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-chart-pie"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Ratan Tata Library (RTL)</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Major Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1949</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>250 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>Ground + 1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 8:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Economics, sociology, geography, commerce; 40,000+ Central/State Govt. documents; 30,000 UN & international org. publications</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Partial depository of United Nations publications; phenomenal government document collection; named after industrialist Ratan Tata</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Angom Jeevan Singh</span><a href="mailto:dl_rtl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>dl_rtl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="south" data-cat="major_library" id="lib-5">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-university"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">South Campus Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Major Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>South Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1970s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>285 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>Ground + 3 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 8:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Multi-disciplinary collection serving all South Campus departments and affiliated colleges</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Largest library building by area; four-storey structure; serves the entire South Campus academic community</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Vinod Kumar Singh</span><a href="mailto:incharge_sdcl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>incharge_sdcl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="law_library" id="lib-6">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-balance-scale"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Faculty of Law Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Law Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1924</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>120 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>2 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 7:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Legal texts, law reports, case studies, legal journals, international law</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Pioneer in legal education; established just 2 years after the University itself; one of the oldest law libraries in India</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Shiva Parihar</span><a href="mailto:dl_foll@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>dl_foll@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="law_library" id="lib-7">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-gavel"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Integrated Law Centre Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Law Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>60 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 6:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Legal textbooks, reference materials, journals for integrated law programme</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Dedicated to five-year integrated law course students</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Mr. Selva Kumar S</span><a href="mailto:al_ilcl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_ilcl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="law_library" id="lib-8">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-gavel"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Law Centre-I Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Law Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>50 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 6:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Law textbooks, reference, court reports</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Serves Law Centre-I students and faculty</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Ms. Latika Singh</span><a href="mailto:al_lc1@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_lc1@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="south" data-cat="law_library" id="lib-9">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-gavel"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Law Centre-II Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Law Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>South Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>50 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 6:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Law textbooks, reference, court reports</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Serves Law Centre-II students on South Campus</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Mr. Vinay Kumar Vishwakarma</span><a href="mailto:al_lc2@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_lc2@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="special_library" id="lib-10">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-braille"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Braille Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Special Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1970s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Braille books, audio books, assistive technologies for visually impaired users</p>
+      <p class="text-xs text-gray-400 mt-1 italic">One of India's few dedicated academic Braille libraries; serves visually impaired students with specialised equipment; linked to DU-NTPC Centre</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Ms. Pooja</span><a href="mailto:al_bl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_bl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="faculty_library" id="lib-11">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-briefcase"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Faculty of Management Studies (FMS) Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Faculty Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1969</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>80 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Sat: 9:00 AM – 7:00 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Management, business administration, economics, finance journals and textbooks</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Established 1969; serves MBA and Ph.D. students at India's premier management faculty</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Ms. Bhawna Verma</span><a href="mailto:al_fmsl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_fmsl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="science_dept" id="lib-12">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-leaf"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Botany Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1962</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>30 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Botany, plant sciences, ecology, environmental biology</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Nucleus of the Centre for Advanced Research in Botany (CARB)</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="science_dept" id="lib-13">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-flask"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Chemistry Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1962</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>30 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Chemistry, biochemistry, chemical engineering references</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Nucleus of the Centre for Advanced Research in Chemistry (CARC)</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="science_dept" id="lib-14">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-stone-500 to-stone-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-mountain"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Geology Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>25 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Geology, earth sciences, mineralogy, petrology</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Specialised geological maps and survey publications</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="science_dept" id="lib-15">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-rocket"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Physics & Astrophysics Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1962</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>30 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Physics, astrophysics, theoretical physics, experimental physics</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Nucleus of the Centre for Advanced Research in Physics & Astrophysics (CARPA)</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="science_dept" id="lib-16">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-paw"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Zoology Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1962</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>25 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Zoology, animal sciences, genetics, entomology</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Nucleus of the Centre for Advanced Research in Zoology (CARK)</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="science_dept" id="lib-17">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-square-root-alt"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Faculty of Mathematical Sciences Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1963</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>30 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Mathematics, statistics, operational research, computer science</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Covers the full mathematical sciences spectrum including computational disciplines</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="education" id="lib-18">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-chalkboard-teacher"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Education Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Education</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1947</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>40 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Education, pedagogy, curriculum development, educational psychology</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Started as the Central Institute of Education Library in 1947; complementary role in achieving noble objectives of the Institute</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Manpreet Kaur</span><a href="mailto:al_fel@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_fel@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="arts_dept" id="lib-19">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-music"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Music Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Arts Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Indian classical music, musicology, performing arts, audio-visual materials</p>
+      <p class="text-xs text-gray-400 mt-1 italic">First departmental library in the Faculty of Music and Fine Arts</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Mr. Kaushal Kumar</span><a href="mailto:al_music@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_music@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="social_science" id="lib-20">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-hands-helping"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Social Work Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Social Science</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>25 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Social work, welfare studies, community development, NGO reports</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Specialised collection on Indian social welfare policies</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Ms. Jyoti Sharma</span><a href="mailto:al_swl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_swl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="languages" id="lib-21">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-language"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Dept. of Linguistics & East Asian Studies Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Languages</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1967</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Chinese, Japanese, Korean language & literature; linguistics; area studies</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Started as Chinese & Japanese Studies in 1967; renamed after addition of Korean Studies in 2004</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Ms. Nisha</span><a href="mailto:al_easl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_easl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="languages" id="lib-22">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-globe-europe"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Dept. of Slavonic & Finno-Ugrian Studies Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Languages</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>15 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Russian, Polish, Czech, Finnish, Hungarian languages & literature</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Unique collection of Slavonic and Finno-Ugrian materials in India</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Ms. Pooja Joshi</span><a href="mailto:al_sful@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_sful@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="area_studies" id="lib-23">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-600 to-yellow-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-globe-africa"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of African Studies Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Area Studies</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>15 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> African history, politics, economics, literature, culture</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Specialised African area studies collection</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Mr. Mitthan Lal Meena</span><a href="mailto:al_astl@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>al_astl@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="languages" id="lib-24">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-globe-europe"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Dept. of Modern European Languages Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Languages</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1948</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> French, German, Spanish, Italian, Portuguese languages & European literature</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Hub of European languages, culture and literary studies since 1948</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="arts_dept" id="lib-25">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-book-open"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of English Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Arts Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> English literature, literary criticism, Commonwealth literature</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Serves one of DU's largest humanities departments</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-500"><i class="fas fa-user text-[10px] mr-1 text-du-purple"></i>Dr. Abhay Chaurasia</span><a href="mailto:achaurasia@duls.du.ac.in" class="text-du-purple dark:text-du-gold text-xs hover:underline"><i class="fas fa-envelope text-[10px] mr-1"></i>achaurasia@duls.du.ac.in</a></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="arts_dept" id="lib-26">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-om"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Hindi Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Arts Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Hindi literature, Hindi linguistics, Braj Bhasha, Awadhi texts</p>
+      <p class="text-xs text-gray-400 mt-1 italic">One of the richest Hindi literary collections in the country</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="social_science" id="lib-27">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-scroll"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of History Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Social Science</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Ancient, medieval, modern Indian & world history</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Extensive collection of historical sources and archival materials</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="social_science" id="lib-28">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-landmark"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Political Science Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Social Science</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Political theory, Indian politics, international relations, governance</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Serves one of India's premier political science departments</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="arts_dept" id="lib-29">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-brain"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Philosophy Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Arts Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>15 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Indian & Western philosophy, logic, ethics, metaphysics</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Collection spans both Indian philosophical traditions and Western philosophy</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="arts_dept" id="lib-30">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-om"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Sanskrit Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Arts Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>15 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Sanskrit texts, Vedas, Upanishads, classical Indian literature</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Preserves ancient Indian knowledge traditions in original Sanskrit</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="social_science" id="lib-31">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-users"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Sociology Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Social Science</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Sociology, social anthropology, Indian society studies</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Part of the RTL ecosystem since the 1960s</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="social_science" id="lib-32">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-map-marked-alt"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Geography Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Social Science</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Physical & human geography, cartography, GIS, environmental studies</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Integral component of RTL since the 1960s; includes map collections</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="north" data-cat="faculty_library" id="lib-33">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-chart-line"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Commerce Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Faculty Library</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>North Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. 1960s</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>20 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Commerce, accounting, business studies, trade & finance</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Integral component of RTL since the 1960s</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="south" data-cat="science_dept" id="lib-34">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-lime-500 to-lime-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-dna"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Biochemistry Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>South Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>15 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Biochemistry, molecular biology, genetics, biotechnology</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Supports cutting-edge research in life sciences at South Campus</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div>
+<div class="lib-card group" data-campus="south" data-cat="science_dept" id="lib-35">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white text-lg flex-shrink-0 shadow-md group-hover:scale-110 transition-transform"><i class="fas fa-bacteria"></i></div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-heading text-base font-bold text-du-purple-dark leading-tight">Department of Microbiology Library</h3>
+        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-du-purple/10 text-du-purple whitespace-nowrap">Science Dept.</span>
+      </div>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-gray-500">
+        <span><i class="fas fa-map-marker-alt text-du-gold mr-1"></i>South Campus</span>
+        <span><i class="fas fa-calendar-alt text-du-gold mr-1"></i>Est. —</span>
+        <span><i class="fas fa-chair text-du-gold mr-1"></i>15 seats</span>
+        <span><i class="fas fa-layer-group text-du-gold mr-1"></i>1 floor(s)</span>
+      </div>
+      <div class="mt-2 bg-du-cream/80 dark:bg-white/5 rounded-lg px-3 py-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-du-purple"><i class="fas fa-clock text-du-gold"></i>Mon–Fri: 9:30 AM – 5:30 PM</div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed"><strong>Collections:</strong> Microbiology, virology, immunology, clinical microbiology</p>
+      <p class="text-xs text-gray-400 mt-1 italic">Supports advanced research in microbial sciences</p>
+      <div class="flex flex-wrap items-center gap-3 mt-2"><span class="text-xs text-gray-400"><i class="fas fa-building text-[10px] mr-1"></i>Department-managed</span></div>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-du-purple-dark text-white py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <img src="images/du_logo.png" alt="DU" class="w-12 h-12 rounded-full bg-white p-[2px] mx-auto mb-3">
+  <p class="font-heading font-bold text-sm">Delhi University Library System</p>
+  <p class="text-du-gold-light text-xs mt-1">DULS &mdash; Est. 1922</p>
+  <div class="flex justify-center gap-4 mt-4 text-white/50 text-xs">
+    <a href="https://duls.du.ac.in/duls/" target="_blank" rel="noopener" class="hover:text-du-gold transition-colors">DULS Website</a>
+    <a href="http://opac.duls.du.ac.in/" target="_blank" rel="noopener" class="hover:text-du-gold transition-colors">Web OPAC</a>
+    <a href="index.html" class="hover:text-du-gold transition-colors">Home</a>
+  </div>
+  <p class="text-white/30 text-[10px] mt-6">&copy; 2026 DULS. Designed by <span class="text-du-gold">Snehasish Paul</span></p>
+</div>
+</footer>
+
+<script>
+// Search
+const searchInput = document.getElementById('search-input');
+const grid = document.getElementById('lib-grid');
+const cards = grid.querySelectorAll('.lib-card');
+const countEl = document.getElementById('results-count');
+let activeCat = 'all';
+let activeCampus = 'all';
+
+function filterCards() {
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const matchSearch = text.includes(searchInput.value.toLowerCase());
+    const matchCat = activeCat === 'all' || card.dataset.cat === activeCat;
+    const matchCampus = activeCampus === 'all' || card.dataset.campus === activeCampus;
+    const show = matchSearch && matchCat && matchCampus;
+    card.classList.toggle('hidden-filter', !show);
+    if (show) visible++;
+  });
+  countEl.textContent = `Showing ${visible} of 35 libraries`;
+}
+
+searchInput.addEventListener('input', filterCards);
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.filter;
+    filterCards();
+  });
+});
+
+document.querySelectorAll('.campus-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.campus-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCampus = btn.dataset.campus;
+    filterCards();
+  });
+});
+
+// Theme toggle
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('duls-theme', next);
+});
+</script>
+</body></html>
