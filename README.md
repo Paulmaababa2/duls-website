@@ -6,7 +6,7 @@
 3. Make sure the `images/` folder stays in the SAME directory as `index.html`
 
 ## Live Website (Share This Link)
-https://9tb1rxcm.scispace.co
+
 
 Anyone with this link can view the website from anywhere in the world.
 
